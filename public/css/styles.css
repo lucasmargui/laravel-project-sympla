@@ -145,3 +145,49 @@ margin-bottom: 0;
 text-align: center;
 padding: 10px;
 }
+
+
+
+#image-container,
+#info-container {
+margin-top: 30px;
+}
+#image-container img {
+border-radius: 10px;
+}
+#info-container h1 {
+font-size: 36px;
+font-weight: 900;
+}
+
+#info-container p {
+    margin: 0;
+    font-size: 14px;
+    display: flex;
+}
+
+#info-container h3,
+#description-container h3{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#info-container ion-icon{
+    font-size: 20px;
+    color: #1238e0;
+    margin-right: 5px;
+}
+
+#items-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#items-list li{
+    display: flex;
+}
+
+#info-container #event-submit{
+    margin: 20px 0;
+}
+

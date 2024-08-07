@@ -6,47 +6,87 @@ use Illuminate\Http\Request;
 
 use App\Models\Event;
 
+use Illuminate\Support\Facades\Log;
+
 class EventController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+    }
+
     public function index(){
 
-        $events = Event::all();
+        $search = request('search');
 
-        return view('welcome',['events' => $events]);
+        if($search){
+            $events = Event::where([
+                ['title', 'like', '%'.$search.'%']
+            ])->get();
+        }else{
+            $events = Event::all();
+        }
+
+        
+
+        return view('welcome',['events' => $events, 'search'=> $search]);
     }
 
     public function create(){
         return view('events.create');
     }
 
-    public function store(Request $request){
-       
-        
-        $event = new Event();
+    public function store(Request $request)
+    {
 
-        $event->title = $request->title;
-        $event->city = $request->city;
-        $event->private = $request->private;
-        $event->description = $request->description;
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            
-            $requestImage = $request->image;
-            $extension = $requestImage->extension();
-            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+        // Validação dos dados do formulário
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'date' => 'required|date',
+            'city' => 'required|string|max:255',
+            'private' => 'required|boolean',
+            'description' => 'nullable|string',
+            'items' => 'nullable|array',
+            'items.*' => 'string',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+    
+        try {
+     
+            $event = new Event();
+            $event->title = $validatedData['title'];
+            $event->date = $validatedData['date'];
+            $event->city = $validatedData['city'];
+            $event->private = $validatedData['private'];
+            $event->description = $validatedData['description'];
+            $event->items = json_encode($validatedData['items']);
+    
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $requestImage = $request->file('image');
+                $extension = $requestImage->extension();
+                $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+    
+                $requestImage->move(public_path('img/events'), $imageName);
+    
+                $event->image = $imageName;
+            } else {
+                $event->image = 'default_image.jpg';
+            }
+    
+            $event->save();
+            return redirect('/')->with('msg', 'Evento criado com sucesso!');
+        } catch (\Exception $e) {
 
-            $requestImage->move(public_path('img/events'), $imageName);
-
-            $event->image = $imageName;
-        }else {
-            // Defina um valor padrão para a imagem caso nenhuma imagem seja enviada
-            $event->image = 'default_image.jpg';
+            return redirect()->back()->withErrors(['error' => 'Erro ao criar evento.']);
         }
+    }
+    
+    
 
-        $event->save();
-
-        return redirect('/')->with('msg', 'Evento criado com sucesso!');
-
-
+    public function show($id){
+        $event = Event::findOrFail($id);
+        return view('events.show', ['event' => $event]);
     }
 }
