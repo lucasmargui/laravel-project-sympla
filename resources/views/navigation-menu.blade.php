@@ -69,6 +69,21 @@
                     </div>
                 @endif
 
+                <!-- Create Event -->
+                <div class="ml-3 relative">
+                    <x-responsive-nav-link href="{{ route('events.index') }}" :active="request()->routeIs('events.index')">
+                    {{ __('Eventos') }}
+                    </x-responsive-nav-link>
+                </div>
+
+                <!-- Create Event -->
+                <div class="ml-3 relative">
+                    <x-responsive-nav-link href="{{ route('events.create') }}" :active="request()->routeIs('events.create')">
+                    {{ __('Criar Eventos') }}
+                    </x-responsive-nav-link>
+                </div>
+
+
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
                     <x-dropdown align="right" width="48">
@@ -120,6 +135,11 @@
                         </x-slot>
                     </x-dropdown>
                 </div>
+           
+           
+           
+           
+           
             </div>
 
             <!-- Hamburger -->
