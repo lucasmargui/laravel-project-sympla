@@ -32,7 +32,7 @@ Route::get('/contact', function () {
 // });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
+    Route::get('/dashboard', [EventController::class, 'dashboard'])->name('events.dashboard');
     Route::get('/', [EventController::class, 'index'])->name('events.index');
     Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
     Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');

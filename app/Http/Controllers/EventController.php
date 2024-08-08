@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Event;
 
-use Illuminate\Support\Facades\Log;
+use App\Models\User;
 
 class EventController extends Controller
 {
@@ -88,8 +88,21 @@ class EventController extends Controller
 
     public function show($id){
         $event = Event::findOrFail($id);
+
         // Decodifica a string JSON em um array
         $event->items = json_decode($event->items, true);
-        return view('events.show', ['event' => $event]);
+
+
+        $eventOwner = User::where('id', $event->user_id)->first()->toArray();
+        
+        return view('events.show', ['event' => $event, 'eventOwner' => $eventOwner]);
     }
+
+    public function dashboard(){
+        $user = auth()->user();
+        $events = $user->events;
+
+        return view('events.dashboard', ['events' => $events]);
+    }
+
 }
