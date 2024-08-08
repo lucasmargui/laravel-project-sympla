@@ -46,5 +46,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('events.destroy');
 
     
+    Route::post('/events/join/{id}', [EventController::class, 'joinEvent'])->name('events.joinEvent');
 
 });

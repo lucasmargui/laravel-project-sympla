@@ -10,6 +10,11 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+
+/**
+ * @method \Illuminate\Database\Eloquent\Relations\BelongsToMany eventsAsParticipant()
+ */
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -61,5 +66,8 @@ class User extends Authenticatable
 
     public function events() {
         return $this->hasMany('App\Models\Event');
+    }
+    public function eventsAsParticipant() {
+        return $this->belongsToMany(Event::class, 'event_user', 'user_id', 'event_id');
     }
 }

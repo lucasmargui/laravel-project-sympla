@@ -89,9 +89,6 @@ class EventController extends Controller
     public function show($id){
         $event = Event::findOrFail($id);
 
-        // Decodifica a string JSON em um array
-        $event->items = json_decode($event->items, true);
-
 
         $eventOwner = User::where('id', $event->user_id)->first()->toArray();
         
@@ -141,6 +138,17 @@ class EventController extends Controller
         return redirect('/dashboard')->with('msg','Editado com sucesso!');
      }
 
+
+     public function joinEvent($id){
+        $user = auth()->user();
+
+        $user->eventsAsParticipant()->attach($id);
+
+        $event = Event::findOrFail($id);
+
+        return redirect('/dashboard')->with('msg', 'Sua presença esta confirmada no evento !'. $event->title);
+
+     }
 
 
 }
