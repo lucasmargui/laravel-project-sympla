@@ -78,6 +78,13 @@
 
                 <!-- Create Event -->
                 <div class="ml-3 relative">
+                    <x-responsive-nav-link href="{{ route('events.dashboard') }}" :active="request()->routeIs('events.dashboard')">
+                    {{ __('Meus Eventos') }}
+                    </x-responsive-nav-link>
+                </div>
+
+                <!-- Create Event -->
+                <div class="ml-3 relative">
                     <x-responsive-nav-link href="{{ route('events.create') }}" :active="request()->routeIs('events.create')">
                     {{ __('Criar Eventos') }}
                     </x-responsive-nav-link>

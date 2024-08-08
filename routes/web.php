@@ -38,4 +38,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
     Route::post('/events', [EventController::class, 'store'])->name('events.store');
 
+    Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('events.destroy');
+
+
 });
