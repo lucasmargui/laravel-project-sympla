@@ -28,8 +28,6 @@ class EventController extends Controller
             $events = Event::all();
         }
 
-        
-
         return view('welcome',['events' => $events, 'search'=> $search]);
     }
 
@@ -87,6 +85,8 @@ class EventController extends Controller
 
     public function show($id){
         $event = Event::findOrFail($id);
+        // Decodifica a string JSON em um array
+        $event->items = json_decode($event->items, true);
         return view('events.show', ['event' => $event]);
     }
 }
