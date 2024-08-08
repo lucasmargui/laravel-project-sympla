@@ -1,5 +1,6 @@
 <x-app-layout>
     <div class="row">
+        
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -9,9 +10,12 @@
             </ul>
         </div>
     @endif
-        @if(session('msg'))
-        <p class="msg">{{ session('msg') }}</p>
-        @endif 
-        @yield('content')
+
+    @if(session('msg'))
+    <p class="msg">{{ session('msg') }}</p>
+    @endif 
+
+    @yield('content')
+
     </div>
 </x-app-layout>

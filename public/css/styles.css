@@ -1,64 +1,70 @@
-h1 {
-    color: red;
-}
-
-body{
+/* Estrutura Global */
+body {
     min-height: 100vh;
     padding-bottom: 100px;
     position: relative;
 }
-header{
+
+/* Tipografia */
+h1 {
+    color: red;
+}
+
+/* Cabeçalho */
+header {
     background-color: #fff;
     border-bottom: 1px solid #ccc;
-
 }
 
-.row{
-    margin: 0;
-}
-
-.container-fluid { 
-    padding: 0;
-}
-.btn-primary {
-    background-color:#F2A340;
-    border: 2px solid #C28008;
-}
-.btn-primary:hover{
-    background-color: #C28008;
-    border-color: #C28008;
-}
-
-#navbar{
+/* Barra de Navegação */
+#navbar {
     justify-content: space-between;
     background-color: #fff;
     padding: 5px 0;
 }
 
-#navbar a:hover
-{
+#navbar a:hover {
     color: #053dd6;
 }
 
-.img-preview{
-    width: 100px;
-    margin-top: 20px;
+/* Layout */
+.container-fluid { 
+    padding: 0;
 }
 
+.row {
+    margin: 0;
+}
 
+/* Botões */
+.btn-primary {
+    background-color: #F2A340;
+    border: 2px solid #C28008;
+}
+
+.btn-primary:hover {
+    background-color: #C28008;
+    border-color: #C28008;
+}
+
+/* Containers */
 #search-container {
-
-background-image: url("https://placehold.co/500x500"); 
-background-size: cover; 
-background-position: center;
-height: 400px;
-padding: 50px;
-text-align: center;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.9), rgba(8, 1, 43, 0.9));
+    background-size: cover; 
+    height: 400px;
+    padding: 50px;
+    text-align: center;
 }
+
+
 #search-container h1 {
-color: #1238e0; 
-margin-bottom: 30px; 
-font-weight: 900;
+    font-family: SpaceGrotesk-Light;
+    color: #ffffff;
+    line-height: 1.2;
+    font-weight: 500;
+    font-size: 64px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /
 }
 
 #search-container form {
@@ -70,21 +76,18 @@ font-weight: 900;
     padding: 50px;
 }
 
-#events-container .subtitle{
+#events-container .subtitle {
     color: #757575;
     margin-bottom: 30px;
 }
-
 
 #cards-container { 
     display: flex;
 }
 
-
-#event-create-container{
-    padding: 30px
+#event-create-container {
+    padding: 30px;
 }
-
 
 #event-create-container label {
     font-weight: bold;
@@ -93,76 +96,17 @@ font-weight: 900;
 #event-create-container input,
 #event-create-container select,
 #event-create-container textarea {
-
     font-size: 12px;
-
 }
-
-#events-container .card {
-
-    flex: 1 1 0 24%;
-    max-width: 25%;
-    border-radius: 10px;
-    padding: 0; 
-    margin: .5%;
-
-}
-#events-container img{
-    max-height: 150px;
-    border-top-left-radius: 10px; border-top-right-radius: 10px;
-}
-
-.card .card-date{
-    font-size: 12px;
-    color: #ccc
-}
-
-
-.card .card-title {
-    color:#212121;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 30px;
-}
-
-.card-participants { 
-    font-size: 14px; color: #757575;
-}
-
-
-footer{
-text-align: center;
-background-color: #353E48;
-color:#FFF;
-padding: 30px;
-position: absolute;
-bottom: 0;
-width: 100%;
-}
-
-
-.msg{
-background-color:#D4EDDA;
-color: #155724;
-border: 1px solid #C3E6CB;
-width: 100%;
-margin-bottom: 0;
-text-align: center;
-padding: 10px;
-}
-
-
 
 #image-container,
 #info-container {
-margin-top: 30px;
+    margin-top: 30px;
 }
-#image-container img {
-border-radius: 10px;
-}
+
 #info-container h1 {
-font-size: 36px;
-font-weight: 900;
+    font-size: 36px;
+    font-weight: 900;
 }
 
 #info-container p {
@@ -172,12 +116,12 @@ font-weight: 900;
 }
 
 #info-container h3,
-#description-container h3{
+#description-container h3 {
     font-size: 20px;
     font-weight: bold;
 }
 
-#info-container ion-icon{
+#info-container ion-icon {
     font-size: 20px;
     color: #1238e0;
     margin-right: 5px;
@@ -188,36 +132,107 @@ font-weight: 900;
     padding-left: 0;
 }
 
-#items-list li{
+#items-list li {
     display: flex;
 }
 
-#info-container #event-submit{
+#info-container #event-submit {
     margin: 20px 0;
 }
 
-
-
-/* Dashboard */
-.dashboard-title-container { 
-    margin-bottom: 30px; 
-    margin-top: 30px;
-}
-.dashboard-events-container th {
-    width: 25%;
+/* Imagens */
+.img-preview {
+    width: 100px;
+    margin-top: 20px;
 }
 
-.dashboard-events-container form{
-    display: inline;
+
+#image-container img {
+    border-radius: 10px;
 }
 
-#info-container .already-joined-msg{
+/* Cartões */
+
+#events-container img {
+    max-height: 150px;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px;
+}
+
+
+#events-container .card {
+    flex: 1 1 0 24%;
+    max-width: 25%;
+    border-radius: 10px;
+    padding: 0; 
+    margin: .5%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s; /* Suaviza a transição */
+}
+
+#events-container .card:hover {
+    transform: scale(1.05); /* Aumenta o tamanho do card ligeiramente */
+   
+}
+
+.card .card-date {
+    font-size: 12px;
+    color: #ccc;
+}
+
+.card .card-title {
+    color: #212121;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.card-participants { 
+    font-size: 14px; 
+    color: #757575;
+}
+
+/* Mensagens */
+.msg {
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solid #C3E6CB;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+}
+
+#info-container .already-joined-msg {
     margin: 15px 0;
     color: #1238e0;
     background-color: #CCE5FF;
     border: 1px solid #B8DAFF;
     padding: 10px;
     width: 275px;
-
 }
 
+/* Rodapé */
+footer {
+    text-align: center;
+    background-color: #353E48;
+    color: #FFF;
+    padding: 30px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Dashboard */
+.dashboard-title-container { 
+    margin-bottom: 30px; 
+    margin-top: 30px;
+}
+
+.dashboard-events-container th {
+    width: 25%;
+}
+
+.dashboard-events-container form {
+    display: inline;
+}
