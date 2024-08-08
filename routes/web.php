@@ -35,10 +35,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [EventController::class, 'dashboard'])->name('events.dashboard');
     Route::get('/', [EventController::class, 'index'])->name('events.index');
     Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
+
     Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
+    Route::get('/events/edit/{id}', [EventController::class, 'edit'])->name('events.edit');
+
+    Route::put('/events/update/{id}', [EventController::class, 'update'])->name('events.update');
+
     Route::post('/events', [EventController::class, 'store'])->name('events.store');
 
     Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('events.destroy');
 
+    
 
 });
