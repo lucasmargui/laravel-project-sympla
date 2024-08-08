@@ -72,12 +72,15 @@ class EventController extends Controller
             } else {
                 $event->image = 'default_image.jpg';
             }
+
+            $user = auth()->user();
+            $event->user_id = $user->id;
     
             $event->save();
             return redirect('/')->with('msg', 'Evento criado com sucesso!');
         } catch (\Exception $e) {
 
-            return redirect()->back()->withErrors(['error' => 'Erro ao criar evento.']);
+            return redirect()->back()->withErrors(['error' => 'Erro ao criar evento.'  . $e->getMessage() ] );
         }
     }
     
