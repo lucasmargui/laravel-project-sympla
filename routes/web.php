@@ -48,4 +48,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     
     Route::post('/events/join/{id}', [EventController::class, 'joinEvent'])->name('events.joinEvent');
 
+    Route::delete('/events/leave/{id}', [EventController::class, 'leaveEvent'])->name('events.leaveEvent');
+
 });
