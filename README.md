@@ -35,6 +35,14 @@ composer create-project laravel/laravel laravel-project-sympla
 
 - Altere o valor dessa variável para nome do banco de dados criado
 
+#### Criação das tabelas no Banco de Dados:
+
+Use o Artisan para criar as tabelas de database/migrations no Banco de Dados 
+
+```
+php artisan migrate
+```
+
 ## Instalação do Jetstream para Autenticação
 
 #### Instalação do Jetstream:
@@ -53,6 +61,14 @@ Use o Artisan para instalar o Jetstream com suporte ao Livewire:
 php artisan jetstream:install livewire
 ```
 
+#### Criação das tabelas no Banco de Dados:
+
+Use o Artisan para criar as tabelas geradas pelo Jetstream no Banco de Dados 
+
+```
+php artisan migrate
+```
+
 #### Instalação do Node.js e Compilação de Recursos:
 
 Instale as dependências do Node.js necessárias para o projeto:
@@ -66,6 +82,17 @@ Compile os recursos do frontend com o comando:
 ```
 npm run dev
 ```
+
+
+# Iniciando o projeto
+
+Use o Artisan para iniciar o servidor.
+
+```
+php artisan serve
+```
+
+
 
 ## Pages
 
