@@ -312,43 +312,6 @@ Retornando a view localizada em events/dashboard.blade.php
 
 </details>
 
-## Relations one to many 
-
-<details>
- <summary>Click to show details about </summary>
-
-#### Criação da Migration:
-
-Para adicionar uma coluna user_id à tabela events, use o comando Artisan:
-
-```
-php artisan make:migration add_user_id_to_events_table
-```
-
-Esse comando cria um arquivo de migration onde você pode definir as alterações necessárias na tabela.
-
-![image](https://github.com/user-attachments/assets/c7a786cd-86c6-411a-a137-24bac851acc0)
-
-
-#### Alteração do Model Event:
-
-No model Event, adicione uma função para definir a relação com o model User. A função user no singular indica que o Event pertence a um único User, criando uma relação de chave estrangeira:
-
-
-![image](https://github.com/user-attachments/assets/6d0dd7df-72d3-4dd6-8aaf-8e1c72377cb7)
-
-
-#### Alteração do Model User:
-
-No model User, adicione uma função para definir a relação com o model Event. A função events no plural indica que o User pode ter muitos Events, criando uma relação de chave estrangeira:
-
-![image](https://github.com/user-attachments/assets/b959db41-160b-446d-a803-1be9bd628c37)
-
-Essas mudanças estabelecem a relação entre os modelos Event e User, onde um evento pertence a um usuário e um usuário pode ter muitos eventos associados.
-
-</details>
-
-
 ## Criando uma página
 
 <details>
@@ -397,6 +360,86 @@ Crie um componente Blade chamado dashboard.blade.php na pasta resources/views/ev
 @endsection
 
 ```
+
+</details>
+
+## Relations one to many 
+
+<details>
+ <summary>Click to show details about </summary>
+
+#### Criação da Migration:
+
+Para adicionar uma coluna user_id à tabela events, use o comando Artisan:
+
+```
+php artisan make:migration add_user_id_to_events_table
+```
+
+Esse comando cria um arquivo de migration onde você pode definir as alterações necessárias na tabela.
+
+![image](https://github.com/user-attachments/assets/c7a786cd-86c6-411a-a137-24bac851acc0)
+
+
+#### Alteração do Model Event:
+
+No model Event, adicione uma função para definir a relação com o model User. A função user no singular indica que o Event pertence a um único User, criando uma relação de chave estrangeira:
+
+
+![image](https://github.com/user-attachments/assets/6d0dd7df-72d3-4dd6-8aaf-8e1c72377cb7)
+
+
+#### Alteração do Model User:
+
+No model User, adicione uma função para definir a relação com o model Event. A função events no plural indica que o User pode ter muitos Events, criando uma relação de chave estrangeira:
+
+![image](https://github.com/user-attachments/assets/b959db41-160b-446d-a803-1be9bd628c37)
+
+Essas mudanças estabelecem a relação entre os modelos Event e User, onde um evento pertence a um usuário e um usuário pode ter muitos eventos associados.
+
+</details>
+
+
+
+## Relations many to many 
+
+<details>
+ <summary>Click to show details about </summary>
+
+#### Criação da Tabela de Relacionamento:
+
+Para estabelecer uma relação muitos-para-muitos entre Event e User, você precisa criar uma tabela intermediária, por exemplo, event_user, que terá duas colunas de chaves estrangeiras: event_id e user_id.
+Execute o comando do artisan para gerar uma nova migração para essa tabela.
+```
+php artisan make:migration create_event_user_table
+```
+
+![image](https://github.com/user-attachments/assets/7654db4b-dad9-4140-8fdb-6f464b3b4db1)
+
+Em seguida, aplique a migração com php artisan migrate.
+
+```
+php artisan migrate
+```
+
+
+#### Definição da Relação nos Models:
+
+No model Event, adicione um método para definir a relação com User. Isso geralmente é feito com o método belongsToMany:
+
+![image](https://github.com/user-attachments/assets/e59021db-22e9-42e8-a613-262a3cfce853)
+
+
+No model User, adicione um método similar para definir a relação com Event:
+
+![image](https://github.com/user-attachments/assets/9067f710-f18c-406e-a11a-8078031dd60e)
+
+
+####  Manipulação da Relação:
+
+Para associar usuários a eventos, você pode implementar uma funcionalidade, como um botão de confirmação de presença. Quando um usuário clicar no botão, um registro é criado na tabela event_user associando o user_id ao event_id.
+Isso pode ser feito através de uma rota e controlador que recebe a solicitação e atualiza a tabela intermediária com os IDs apropriados.
+Assim, você cria uma relação muitos-para-muitos entre Event e User, permitindo que cada evento tenha muitos usuários e cada usuário possa participar de muitos eventos.
 
 </details>
 
