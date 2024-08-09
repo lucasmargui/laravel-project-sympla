@@ -92,6 +92,36 @@ Use o Artisan para iniciar o servidor.
 php artisan serve
 ```
 
+# Documentação do projeto
+
+
+## Template Inheritance
+
+Criação pasta chamada layouts dentro de resources/views, onde foi adicionado o arquivo main.blade.php. Este arquivo serve como um layout base para as páginas, contendo a diretiva @yield('content'), que é responsável por renderizar o conteúdo específico das páginas.
+
+![image](https://github.com/user-attachments/assets/794ffe26-b45d-4ee2-b7ae-325ddef51c32)
+
+
+- Exibição de Erros: O bloco @if ($errors->any()) verifica se há algum erro de validação. Se existirem, uma div com a classe alert alert-danger é exibida, listando todos os erros em um <ul> com <li> para cada erro.
+
+- Exibição de Mensagens de Sucesso: O bloco @if(session('msg')) verifica se há uma mensagem de sucesso armazenada na sessão. Se houver, essa mensagem é exibida em um parágrafo com a classe msg.
+
+- Renderização de Conteúdo Dinâmico: O comando @yield('content') é utilizado para inserir o conteúdo específico de cada página que estender esse layout.
+
+- <x-app-layout>: É um componente Blade fornecido pelo JetStream no Laravel, que implementa configurações de segurança para usuários autenticados. Para garantir o correto funcionamento da autenticação durante a troca de dados entre o cliente e o servidor, é essencial encapsular todo o conteúdo destinado ao @yield dentro desse componente.
+
+![image](https://github.com/user-attachments/assets/c01059d3-1694-4958-9212-4a06395d6b54)
+
+#### @extends('layouts.main'):
+
+Este comando indica que o arquivo Blade atual está estendendo um layout principal chamado main, que está localizado na pasta layouts. O layout é geralmente um template básico que define a estrutura comum para várias páginas, como o cabeçalho, rodapé e outras seções que são reutilizadas em várias views.
+
+#### @section('content'):
+
+Este comando define uma seção de conteúdo dentro do template Blade. A palavra 'content' é o nome da seção. No layout principal (layouts.main), há um comando @yield('content'), que é onde o conteúdo definido nesta seção será inserido.
+
+
+
 
 
 ## Pages
