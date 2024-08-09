@@ -21,6 +21,9 @@ composer create-project laravel/laravel laravel-project-sympla
 
 ## Conexão com Banco de dados
 
+<details>
+ <summary>Click to show details about </summary>
+
 #### Criação do Banco de Dados:
 
 - Inicie SQL no XAMPP
@@ -83,7 +86,12 @@ Compile os recursos do frontend com o comando:
 npm run dev
 ```
 
+</details>
+
 ## Gerenciamento de Migrations no Laravel
+
+<details>
+ <summary>Click to show details about </summary>
 
 #### Estrutura da Migration:
 - Método up(): Define as operações a serem realizadas quando a migration é aplicada, como criar uma tabela.
@@ -121,6 +129,8 @@ npm run dev
 - Comando: php artisan migrate:reset
 - Descrição: Reverte todas as migrations aplicadas e as reexecuta. Deleta todas as tabelas e recria-as a partir das migrations.
 
+</details>
+
 # Iniciando o projeto
 
 Use o Artisan para iniciar o servidor.
@@ -131,8 +141,10 @@ php artisan serve
 
 # Documentação do projeto
 
-
 ## Template Inheritance
+
+<details>
+ <summary>Click to show details about </summary>
 
 Criação pasta chamada layouts dentro de resources/views, onde foi adicionado o arquivo main.blade.php. Este arquivo serve como um layout base para as páginas, contendo a diretiva @yield('content'), que é responsável por renderizar o conteúdo específico das páginas.
 
@@ -161,9 +173,13 @@ Este comando define uma seção de conteúdo dentro do template Blade. A palavra
 ![image](https://github.com/user-attachments/assets/78f3ab9a-b831-45a2-a7b2-c1d8593821d2)
 
 
+</details>
 
 ## Controller
 
+<details>
+ <summary>Click to show details about </summary>
+    
 #### Criação do Controller:
 
 Para criar um novo controller no Laravel, utilize o comando Artisan:
@@ -210,11 +226,14 @@ Neste exemplo, a rota '/' está configurada para chamar a ação index do EventC
 
 - leaveEvent($id): Remove o usuário atual como participante de um evento específico e redireciona para o painel de controle com uma mensagem de sucesso.
 
+</details>
 
 ## Rotas
 
-![image](https://github.com/user-attachments/assets/4dedb597-6f39-4d84-85c9-fd42e3c36a14)
+<details>
+ <summary>Click to show details about </summary>
 
+![image](https://github.com/user-attachments/assets/4dedb597-6f39-4d84-85c9-fd42e3c36a14)
 
 #### Route::get('/dashboard', ...:
 
@@ -291,8 +310,95 @@ Retornando a view localizada em events/dashboard.blade.php
 - Método HTTP: DELETE
 - Nome: events.leaveEvent
 
+</details>
+
+## Relations one to many 
+
+<details>
+ <summary>Click to show details about </summary>
+
+#### Criação da Migration:
+
+Para adicionar uma coluna user_id à tabela events, use o comando Artisan:
+
+```
+php artisan make:migration add_user_id_to_events_table
+```
+
+Esse comando cria um arquivo de migration onde você pode definir as alterações necessárias na tabela.
+
+![image](https://github.com/user-attachments/assets/c7a786cd-86c6-411a-a137-24bac851acc0)
 
 
+#### Alteração do Model Event:
+
+No model Event, adicione uma função para definir a relação com o model User. A função user no singular indica que o Event pertence a um único User, criando uma relação de chave estrangeira:
+
+
+![image](https://github.com/user-attachments/assets/6d0dd7df-72d3-4dd6-8aaf-8e1c72377cb7)
+
+
+#### Alteração do Model User:
+
+No model User, adicione uma função para definir a relação com o model Event. A função events no plural indica que o User pode ter muitos Events, criando uma relação de chave estrangeira:
+
+![image](https://github.com/user-attachments/assets/b959db41-160b-446d-a803-1be9bd628c37)
+
+Essas mudanças estabelecem a relação entre os modelos Event e User, onde um evento pertence a um usuário e um usuário pode ter muitos eventos associados.
+
+</details>
+
+
+## Criando uma página
+
+<details>
+ <summary>Click to show details about </summary>
+
+#### Alteração da Rota:
+
+Adicione uma nova rota para o dashboard no arquivo de rotas (web.php), que aponta para um método chamado dashboard no EventController. O nome da rota é definido como events.dashboard:
+
+```
+Route::get('/dashboard', [EventController::class, 'dashboard'])->name('events.dashboard');
+
+```
+
+#### Adição da Função no Controller:
+
+No EventController, adicione um método dashboard para manipular a lógica e a visualização do dashboard:
+
+```
+public function dashboard()
+{
+    // Lógica para o dashboard
+   return view('events.dashboard', ['events' => $events, 'eventsasparticipant' => $eventsAsParticipant]);
+}
+```
+
+#### Alteração dos Links:
+
+Atualize os links em seu aplicativo para utilizar a nova rota nomeada events.dashboard. Isso pode envolver a atualização de links em seus componentes Blade ou outras partes do seu código:
+
+```
+<a href="{{ route('events.dashboard') }}">Dashboard</a>
+```
+
+#### Criação do Componente Dashboard:
+
+Crie um componente Blade chamado dashboard.blade.php na pasta resources/views/events para definir o layout e o conteúdo do dashboard:
+
+```
+<!-- resources/views/events/dashboard.blade.php -->
+@extends('layouts.app')
+
+@section('content')
+    <h1>Dashboard</h1>
+    <!-- Conteúdo do dashboard -->
+@endsection
+
+```
+
+</details>
 
 ## Pages
 
