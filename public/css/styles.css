@@ -16,6 +16,8 @@ header {
     border-bottom: 1px solid #ccc;
 }
 
+
+
 /* Barra de Navegação */
 #navbar {
     justify-content: space-between;
@@ -96,7 +98,25 @@ header {
 #event-create-container input,
 #event-create-container select,
 #event-create-container textarea {
-    font-size: 12px;
+    font-size: 13px;
+}
+
+#event-create-container h1 {
+    color: #08034d4b; /* Cinza apagado */
+    font-weight: 300; /* Estilo de texto mais leve */
+    font-size: 50px;
+}
+
+#event-create-container .form-control, .form-control-file, .form-select {
+    border-color: #ced4da;
+    border-width: 1px;
+    box-shadow: none;
+    transition: border-color 0.3s ease;
+}
+
+#event-create-container .form-control:focus, .form-control-file:focus, .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 #image-container,
@@ -113,6 +133,10 @@ header {
     margin: 0;
     font-size: 14px;
     display: flex;
+}
+
+#description-container{
+    margin-bottom: 40px;
 }
 
 #info-container h3,
@@ -235,4 +259,19 @@ footer {
 
 .dashboard-events-container form {
     display: inline;
+}
+
+
+
+/* Table events */
+#table-events .btn{
+    color: #fff;
+
+}
+
+/* Dashboard */
+#dashboard h1{
+    color: #08034d4b; /* Cinza apagado */
+    font-weight: 300; /* Estilo de texto mais leve */
+    font-size: 25px;
 }
