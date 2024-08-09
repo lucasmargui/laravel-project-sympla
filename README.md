@@ -149,15 +149,18 @@ Creation of a folder called layouts inside resources/views, where the main.blade
 
 ![image](https://github.com/user-attachments/assets/794ffe26-b45d-4ee2-b7ae-325ddef51c32)
 
-- Displaying Errors: The @if ($errors->any()) block checks for any validation errors. If they exist, a div with the alert class alert-danger is displayed, listing all errors in a <ul> with <li> for each error.
+- Displaying Errors: The @if ($errors->any()) block checks for any validation errors.
 
-- Displaying Success Messages: The @if(session('msg')) block checks if there is a success message stored in the session. If there is, this message is displayed in a paragraph with the msg class.
+- Displaying Success Messages: The @if(session('msg')) block checks if there is a success message stored in the session.
 
 - Rendering Dynamic Content: The @yield('content') command is used to insert the specific content of each page that extends this layout.
 
-- <x-app-layout>: This is a Blade component provided by JetStream in Laravel, which implements security settings for authenticated users. To ensure that authentication works correctly during data exchange between the client and the server, it is essential to encapsulate all content intended for @yield within this component.
+- x-app-layout : This is a Blade component provided by JetStream in Laravel, which implements security settings for authenticated users. To ensure that authentication works correctly during data exchange between the client and the server, it is essential to encapsulate all content intended for @yield within this component.
+
+#### Rendering Content
 
 ![image](https://github.com/user-attachments/assets/c01059d3-1694-4958-9212-4a06395d6b54)
+
 
 #### @extends('layouts.main'):
 
