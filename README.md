@@ -125,7 +125,85 @@ Este comando define uma seção de conteúdo dentro do template Blade. A palavra
 
 
 
+## Rotas
 
+![image](https://github.com/user-attachments/assets/4dedb597-6f39-4d84-85c9-fd42e3c36a14)
+
+
+#### Route::get('/dashboard', ...:
+
+- Define uma rota HTTP GET para o caminho /dashboard. Isso significa que quando um usuário acessa a URL example.com/dashboard, essa rota será acionada.
+
+#### [EventController::class, 'dashboard']:
+
+- Especifica o controlador e o método que devem ser chamados quando a rota /dashboard for acessada.
+- EventController::class refere-se à classe EventController, e 'dashboard' é o método dentro desse controlador que será executado para lidar com a solicitação.
+
+![image](https://github.com/user-attachments/assets/7bd6f7da-bbb7-4b6a-81de-b5415a718ac4)
+
+Retornando a view localizada em events/dashboard.blade.php
+
+
+#### ->name('events.dashboard'):
+
+- Atribui um nome à rota, neste caso 'events.dashboard'. Isso permite que você faça referência a essa rota de forma mais conveniente em outras partes do seu código, como ao gerar URLs ou redirecionar usuários.
+
+ ![image](https://github.com/user-attachments/assets/3e6bbc13-17b8-4857-b9f3-b38d0304fce5)
+
+
+#### Route::get('/dashboard', [EventController::class, 'dashboard'])->name('events.dashboard');
+
+- Descrição: Exibe o painel de controle ou dashboard, geralmente usado para mostrar uma visão geral dos eventos ou dados relacionados.
+- Método HTTP: GET
+- Nome: events.dashboard
+
+#### Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
+
+- Descrição: Mostra um formulário para criar um novo evento.
+- Método HTTP: GET
+- Nome: events.create
+
+#### Route::get('/events/{id}', [EventController::class, 'show'])->name('events.show');
+
+- Descrição: Exibe os detalhes de um evento específico, identificado pelo ID fornecido na URL.
+- Método HTTP: GET
+- Nome: events.show
+
+#### Route::get('/events/edit/{id}', [EventController::class, 'edit'])->name('events.edit');
+
+- Descrição: Mostra um formulário para editar um evento existente, identificado pelo ID fornecido na URL.
+- Método HTTP: GET
+- Nome: events.edit
+
+#### Route::put('/events/update/{id}', [EventController::class, 'update'])->name('events.update');
+
+- Descrição: Atualiza os dados de um evento existente com base nas informações enviadas no formulário e o ID fornecido na URL.
+- Método HTTP: PUT
+- Nome: events.update
+
+#### Route::post('/events', [EventController::class, 'store'])->name('events.store');
+
+- Descrição: Armazena um novo evento no banco de dados com base nas informações enviadas no formulário.
+- Método HTTP: POST
+- Nome: events.store
+
+#### Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('events.destroy');
+
+- Descrição: Remove um evento existente do banco de dados com base no ID fornecido na URL.
+- Método HTTP: DELETE
+- Nome: events.destroy
+
+#### Route::post('/events/join/{id}', [EventController::class, 'joinEvent'])->name('events.joinEvent');
+
+- Descrição: Permite que um usuário se inscreva ou participe de um evento específico identificado pelo ID.
+- Método HTTP: POST
+- Nome: events.joinEvent
+
+#### Route::delete('/events/leave/{id}', [EventController::class, 'leaveEvent'])->name('events.leaveEvent');
+
+- Descrição: Permite que um usuário saia ou deixe um evento específico identificado pelo ID.
+- Método HTTP: DELETE
+- Nome: events.leaveEvent
 
 
 ## Pages
