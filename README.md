@@ -121,6 +121,10 @@ Este comando indica que o arquivo Blade atual está estendendo um layout princip
 Este comando define uma seção de conteúdo dentro do template Blade. A palavra 'content' é o nome da seção. No layout principal (layouts.main), há um comando @yield('content'), que é onde o conteúdo definido nesta seção será inserido.
 
 
+![image](https://github.com/user-attachments/assets/78f3ab9a-b831-45a2-a7b2-c1d8593821d2)
+
+
+
 
 
 
