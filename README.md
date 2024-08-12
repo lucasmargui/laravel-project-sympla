@@ -340,7 +340,10 @@ In the EventController, add a dashboard method to handle the dashboard logic and
 public function dashboard()
 {
 // Logic for the dashboard
-return view('events.dashboard', ['events' => $events, 'eventsasparticipant' => $eventsAsParticipant]); }
+
+return view('events.dashboard', ['events' => $events, 'eventsasparticipant' => $eventsAsParticipant]);
+
+}
 ```
 
 #### Changing the Route:
@@ -358,6 +361,10 @@ Update the links in your application to use the new route named events.dashboard
 
 ```
 <a href="{{ route('events.dashboard') }}">Dashboard</a>
+```
+or
+```
+<a href="/dashboard">Dashboard</a>
 ```
 
 
