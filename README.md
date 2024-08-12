@@ -316,33 +316,6 @@ Returning the view located at events/dashboard.blade.php
 <details>
 <summary>Click to show details about </summary>
 
-#### Changing the Route:
-
-Add a new route for the dashboard in the routes file (web.php), which points to a method called dashboard in the EventController. The route name is defined as events.dashboard:
-
-```
-Route::get('/dashboard', [EventController::class, 'dashboard'])->name('events.dashboard');
-
-```
-
-#### Adding the Function to the Controller:
-
-In the EventController, add a dashboard method to handle the dashboard logic and visualization:
-
-```
-public function dashboard()
-{
-// Logic for the dashboard
-return view('events.dashboard', ['events' => $events, 'eventsasparticipant' => $eventsAsParticipant]); }
-```
-
-#### Changing Links:
-
-Update the links in your application to use the new route named events.dashboard. This may involve updating links in your Blade components or other parts of your code:
-
-```
-<a href="{{ route('events.dashboard') }}">Dashboard</a>
-```
 
 #### Creating the Dashboard Component:
 
@@ -358,6 +331,35 @@ Create a Blade component called dashboard.blade.php in the resources/views/event
 @endsection
 
 ```
+
+#### Adding the Function to the Controller:
+
+In the EventController, add a dashboard method to handle the dashboard logic and visualization:
+
+```
+public function dashboard()
+{
+// Logic for the dashboard
+return view('events.dashboard', ['events' => $events, 'eventsasparticipant' => $eventsAsParticipant]); }
+```
+
+#### Changing the Route:
+
+Add a new route for the dashboard in the routes file (web.php), which points to a method called dashboard in the EventController. The route name is defined as events.dashboard:
+
+```
+Route::get('/dashboard', [EventController::class, 'dashboard'])->name('events.dashboard');
+
+```
+
+#### Changing Links:
+
+Update the links in your application to use the new route named events.dashboard. This may involve updating links in your Blade components or other parts of your code:
+
+```
+<a href="{{ route('events.dashboard') }}">Dashboard</a>
+```
+
 
 </details>
 
